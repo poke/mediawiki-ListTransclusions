@@ -5,7 +5,7 @@
  * @author Patrick Westerhoff [poke]
  */
 class SpecialListTransclusions extends SpecialPage {
-	protected $skin, $dbr;
+	protected $dbr;
 	protected $target;
 	protected $opts;
 
@@ -26,7 +26,6 @@ class SpecialListTransclusions extends SpecialPage {
 
 		$this->setHeaders();
 		$this->dbr = wfGetDB( DB_SLAVE );
-		$this->skin = $wgUser->getSkin();
 		$this->opts = new FormOptions();
 		$this->opts->add( 'target', '' );
 		$this->opts->fetchValuesFromRequest( $wgRequest );
@@ -50,10 +49,10 @@ class SpecialListTransclusions extends SpecialPage {
 
 		// output :: titles
 		$targetText = $this->target->getPrefixedText();
-		$wgOut->setPageTitle( wfMsg( 'listtransclusions-title', $targetText ) );
-		$wgOut->setSubtitle( wfMsg( 'listtransclusions-backlink',
-				$this->skin->link( $this->target, htmlspecialchars( $targetText ), array(),
-				array( 'redirect' => 'no' ) ) ) );
+		$wgOut->setPageTitle( wfMessage( 'listtransclusions-title', $targetText )->text() );
+		$wgOut->setSubtitle( wfMessage( 'listtransclusions-backlink',
+				Linker::link( $this->target, htmlspecialchars( $targetText ), array(),
+				array( 'redirect' => 'no' ) ) )->text() );
 
 		// check target's existance
 		if ( !$this->target->exists() ) {
@@ -131,16 +130,16 @@ class SpecialListTransclusions extends SpecialPage {
 	 */
 	private function generatePagesList( $pages, $msg ) {
 		if ( count( $pages ) <= 0 ) {
-			return wfMsgExt( $msg . '-no', array( 'parse' ), $this->target->getPrefixedText() );
+			return wfMessage( $msg . '-no', $this->target->getPrefixedText() )->parseAsBlock();
 		}
 
 		usort( $pages, array( 'Title', 'compare' ) );
-		$t = wfMsgExt( $msg, array( 'parse' ), $this->target->getPrefixedText() );
+		$t = wfMessage( $msg, $this->target->getPrefixedText() )->parseAsBlock();
 		$t .= "<ul>\n";
 
 		foreach ( $pages as $titleObj ) {
-			$t .= '<li>' . $this->skin->link( $titleObj ) . ' (';
-			$t .= $this->skin->link( $titleObj, wfMsg( 'hist' ), array(), array( 'action' => 'history' ) );
+			$t .= '<li>' . Linker::link( $titleObj ) . ' (';
+			$t .= Linker::link( $titleObj, wfMessage( 'hist' )->text(), array(), array( 'action' => 'history' ) );
 			$t .= ")</li>\n";
 		}
 
@@ -160,7 +159,7 @@ class SpecialListTransclusions extends SpecialPage {
 		$target = $this->target ? $this->target->getPrefixedText() : '';
 
 		$f  = Xml::openElement( 'form', array( 'action' => $wgScript ) );
-		$f .= Xml::fieldset( wfMsg( 'listtransclusions' ) );
+		$f .= Xml::fieldset( wfMessage( 'listtransclusions' )->text() );
 
 		// hidden values
 		$f .= Html::hidden( 'title', $wgTitle->getPrefixedText() );
@@ -169,10 +168,10 @@ class SpecialListTransclusions extends SpecialPage {
 		}
 
 		// form elements
-		$f .= Xml::inputLabel( wfMsg( 'listtransclusions-page' ), 'target',
+		$f .= Xml::inputLabel( wfMessage( 'listtransclusions-page' )->text(), 'target',
 			'mw-listtransclusions-target', 40, $target );
 		$f .= ' ';
-		$f .= Xml::submitButton( wfMsg( 'allpagessubmit' ) );
+		$f .= Xml::submitButton( wfMessage( 'allpagessubmit' )->text() );
 
 		$f .= Xml::closeElement( 'fieldset' ) . Xml::closeElement( 'form' );
 
