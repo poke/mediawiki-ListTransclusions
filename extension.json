@@ -1,6 +1,7 @@
 {
 	"name": "ListTransclusions",
 	"author": "Patrick Westerhoff",
+	"version": "2.0",
 	"url": "http://mediawiki.org/wiki/Extension:ListTransclusions",
 	"license-name": "MPL-2.0",
 
