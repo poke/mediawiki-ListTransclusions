@@ -1,0 +1,18 @@
+{
+	"listtransclusions": "Special page name",
+	"listtransclusions-desc": "Extension description",
+	"listtransclusions-header": "Text displayed at the beginning of the special page",
+	"listtransclusions-footer": "Text displayed at the end of the special page",
+
+	"listtransclusions-title": "Special page title (parameter $1 is the target page title)",
+	"listtransclusions-backlink": "Backlink title (parameter $1 is the target page title)",
+	"listtransclusions-invalid": "Error displayed when the specified title is invalid.",
+	"listtransclusions-notexist": "Error displayed when the target page does not exist (parameter $1 is the target page title)",
+	"listtransclusions-tpls": "Introductory text for templates (parameter $1 is the target page title)",
+	"listtransclusions-tpls-no": "Text displayed when no templates are used (parameter $1 is the target page title)",
+	"listtransclusions-imgs": "Introductory text for images (parameter $1 is the target page title)",
+	"listtransclusions-imgs-no": "Text displayed when no images are used (parameter $1 is the target page title)",
+
+	"accesskey-t-listtransclusions": "Access key for the toolbox menu item",
+	"tooltip-t-listtransclusions": "Tooltip for the toolbox menu item"
+}

@@ -21,7 +21,7 @@ $wgExtensionCredits['specialpage'][] = array(
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['ListTransclusionsHooks'] = $dir . 'ListTransclusions.hooks.php';
 $wgAutoloadClasses['SpecialListTransclusions'] = $dir . 'SpecialListTransclusions.php';
-$wgExtensionMessagesFiles['ListTransclusions'] = $dir . 'ListTransclusions.i18n.php';
+$wgMessagesDirs['ListTransclusions'] = __DIR__ . '/i18n';
 $wgExtensionMessagesFiles['ListTransclusionsAlias'] = $dir . 'ListTransclusions.alias.php';
 
 $wgSpecialPages['ListTransclusions'] = 'SpecialListTransclusions';
