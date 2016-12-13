@@ -1,10 +1,13 @@
 <?php
 /**
- * ListTransclusions extension, alias file
- *
- * @author Patrick Westerhoff [poke]
+ * Aliases for Special:ListTransclusions
  */
-$aliases       = array();
-$aliases['en'] = array(
+$specialPageAliases = array();
+
+$specialPageAliases['en'] = array(
     'ListTransclusions' => array( 'ListTransclusions' ),
+);
+
+$specialPageAliases['de'] = array(
+    'ListTransclusions' => array( 'Einbindungsliste' ),
 );
