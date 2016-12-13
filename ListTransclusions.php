@@ -1,30 +1,20 @@
 <?php
 /**
- * ListTransclusions extension
- *
- * @author Patrick Westerhoff [poke]
+ * ListTransclusions extension.
  */
-if ( !defined( 'MEDIAWIKI' ) ) {
-	exit( 1 );
+if ( function_exists( 'wfLoadExtension' ) ) {
+	wfLoadExtension( 'ListTransclusions' );
+
+	// Keep i18n globals so mergeMessageFileList.php doesn’t break
+	$wgMessagesDirs['ListTransclusions'] = __DIR__ . '/i18n';
+	$wgExtensionMessagesFiles['ListTransclusionsAlias'] = __DIR__ . '/ListTransclusions.alias.php';
+
+	wfWarn(
+		'Deprecated PHP entry point used for ListTransclusions extension. ' .
+		'Please use wfLoadExtension instead, ' .
+		'see https://www.mediawiki.org/wiki/Extension_registration for more details.'
+	);
+	return;
+} else {
+	die( 'This version of the ListTransclusions extension requires MediaWiki 1.25+' );
 }
-
-$wgExtensionCredits['specialpage'][] = array(
-	'path'           => __FILE__,
-	'name'           => 'ListTransclusions',
-	'author'         => 'Patrick Westerhoff',
-	'url'            => 'http://mediawiki.org/wiki/Extension:ListTransclusions',
-	'description'    => 'Lists all transcluded templates and used images of a given page',
-	'descriptionmsg' => 'listtransclusions-desc',
-);
-
-/* Extension setup */
-$dir = dirname( __FILE__ ) . '/';
-$wgAutoloadClasses['ListTransclusionsHooks'] = $dir . 'ListTransclusions.hooks.php';
-$wgAutoloadClasses['SpecialListTransclusions'] = $dir . 'SpecialListTransclusions.php';
-$wgMessagesDirs['ListTransclusions'] = __DIR__ . '/i18n';
-$wgExtensionMessagesFiles['ListTransclusionsAlias'] = $dir . 'ListTransclusions.alias.php';
-
-$wgSpecialPages['ListTransclusions'] = 'SpecialListTransclusions';
-
-/* Extension hooks */
-$wgHooks['BaseTemplateToolbox'][] = 'ListTransclusionsHooks::onBaseTemplateToolbox';
