@@ -24,7 +24,6 @@ $wgExtensionMessagesFiles['ListTransclusions'] = $dir . 'ListTransclusions.i18n.
 $wgExtensionMessagesFiles['ListTransclusionsAlias'] = $dir . 'ListTransclusions.alias.php';
 
 $wgSpecialPages['ListTransclusions'] = 'SpecialListTransclusions';
-$wgSpecialPageGroups['ListTransclusions'] = 'pagetools';
 
 /**
  * BaseTemplateToolbox hook

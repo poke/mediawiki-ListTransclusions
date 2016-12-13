@@ -177,4 +177,11 @@ class SpecialListTransclusions extends SpecialPage {
 
 		return $f . "\n";
 	}
+
+	/**
+	 * Set special page group name.
+	 */
+	protected function getGroupName() {
+		return 'pagetools';
+	}
 }
