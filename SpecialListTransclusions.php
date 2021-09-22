@@ -25,7 +25,7 @@ class SpecialListTransclusions extends SpecialPage {
 		global $wgRequest, $wgOut, $wgUser;
 
 		$this->setHeaders();
-		$this->dbr = wfGetDB( DB_SLAVE );
+		$this->dbr = wfGetDB( DB_REPLICA );
 		$this->opts = new FormOptions();
 		$this->opts->add( 'target', '' );
 		$this->opts->fetchValuesFromRequest( $wgRequest );
