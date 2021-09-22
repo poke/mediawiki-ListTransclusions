@@ -1,7 +1,7 @@
 {
 	"name": "ListTransclusions",
 	"author": "Patrick Westerhoff",
-	"version": "2.0",
+	"version": "2.1",
 	"url": "http://mediawiki.org/wiki/Extension:ListTransclusions",
 	"license-name": "MPL-2.0",
 
@@ -26,7 +26,7 @@
 	},
 
 	"Hooks": {
-		"BaseTemplateToolbox": "ListTransclusionsHooks::onBaseTemplateToolbox"
+		"SidebarBeforeOutput": "ListTransclusionsHooks::onSidebarBeforeOutput"
 	},
 	"SpecialPages": {
 		"ListTransclusions": "SpecialListTransclusions"

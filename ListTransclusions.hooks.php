@@ -6,19 +6,21 @@
  */
 class ListTransclusionsHooks {
 	/**
-	 * BaseTemplateToolbox hook
+	 * SidebarBeforeOutput hook
 	 *
-	 * @param $tpl Object the skin template
-	 * @param $toolbox Object array of toolbox items
-	 * @return boolean always true
+	 * @param Skin $skin The skin
+	 * @param Object $sidebar array of sidebar items
+	 * @return bool always true
 	 */
-	public static function onBaseTemplateToolbox( $tpl, &$toolbox ) {
-		if ( $tpl->data['notspecialpage'] ) {
-			$toolbox['listtransclusions'] = array(
-				'href' => SpecialPage::getTitleFor( 'ListTransclusions', $tpl->getSkin()->thispage )->getLocalUrl(),
+	public static function onSidebarBeforeOutput( Skin $skin, &$sidebar ) {
+		$title = $skin->getOutput()->getTitle();
+		if ( !$title->isSpecialPage() ) {
+			$sidebar['TOOLBOX']['listtransclusions'] = [
+				'href' => SpecialPage::getTitleFor( 'ListTransclusions', $skin->thispage )->getLocalUrl(),
 				'id' => 't-listtransclusions'
-			);
+			];
 		}
+
 		return true;
 	}
 }
