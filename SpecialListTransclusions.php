@@ -92,7 +92,7 @@ class SpecialListTransclusions extends SpecialPage {
 			}
 		}
 
-		$this->dbr->freeResult( $dbRes );
+		$dbRes->free();
 		return $pages;
 	}
 
@@ -116,7 +116,7 @@ class SpecialListTransclusions extends SpecialPage {
 			}
 		}
 
-		$this->dbr->freeResult( $dbRes );
+		$dbRes->free();
 		return $pages;
 	}
 
