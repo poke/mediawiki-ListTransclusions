@@ -1,7 +1,7 @@
 {
 	"name": "ListTransclusions",
 	"author": "Patrick Westerhoff",
-	"version": "2.1",
+	"version": "2.2",
 	"url": "http://mediawiki.org/wiki/Extension:ListTransclusions",
 	"license-name": "MPL-2.0",
 
@@ -9,7 +9,7 @@
 	"descriptionmsg": "listtransclusions-desc",
 	"type": "specialpage",
 	"requires": {
-        "MediaWiki": ">= 1.25.0"
+        "MediaWiki": ">= 1.39.0"
     },
 
 	"AutoloadClasses": {

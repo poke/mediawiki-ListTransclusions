@@ -1,4 +1,7 @@
 <?php
+
+use MediaWiki\MediaWikiServices;
+
 /**
  * ListTransclusions extension, Special page
  *
@@ -79,16 +82,22 @@ class SpecialListTransclusions extends SpecialPage {
 	 * @return Array Loaded templates
 	 */
 	private function loadTemplates( $targetId ) {
+
+		$linksMigration = MediaWikiServices::getInstance()->getLinksMigration();
+		$queryInfo = $linksMigration->getQueryInfo( 'templatelinks' );
+		list( $nsField, $titleField ) = $linksMigration->getTitleFields( 'templatelinks' );
+
 		$pages = array();
 		$dbRes = $this->dbr->select(
-				array( 'templatelinks' ),
-				array( 'tl_namespace', 'tl_title' ),
+				$queryInfo['tables'],
+				$queryInfo['fields'],
 				array( 'tl_from' => $targetId ),
-				__METHOD__ );
+				__METHOD__,
+				$queryInfo['joins']);
 
 		if ( $dbRes !== false ) {
 			foreach ( $dbRes as $row ) {
-				$pages[] = Title::makeTitle( $row->tl_namespace, $row->tl_title );
+				$pages[] = Title::makeTitle( $row->$nsField, $row->$titleField );
 			}
 		}
 
