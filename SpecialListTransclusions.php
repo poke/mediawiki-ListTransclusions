@@ -93,6 +93,7 @@ class SpecialListTransclusions extends SpecialPage {
 				$queryInfo['fields'],
 				array( 'tl_from' => $targetId ),
 				__METHOD__,
+				array(),
 				$queryInfo['joins']);
 
 		if ( $dbRes !== false ) {
