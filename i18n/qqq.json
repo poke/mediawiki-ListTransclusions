@@ -13,6 +13,6 @@
 	"listtransclusions-imgs": "Introductory text for images (parameter $1 is the target page title)",
 	"listtransclusions-imgs-no": "Text displayed when no images are used (parameter $1 is the target page title)",
 
-	"accesskey-t-listtransclusions": "Access key for the toolbox menu item",
+	"accesskey-t-listtransclusions": "{{doc-accesskey}} Access key for the toolbox menu item",
 	"tooltip-t-listtransclusions": "Tooltip for the toolbox menu item"
 }
